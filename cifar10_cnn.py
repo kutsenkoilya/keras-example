@@ -20,8 +20,13 @@ def use_valohai_input():
     """
     datadir_base = os.path.expanduser(os.path.join('~', '.keras'))
     datadir = os.path.join(datadir_base, 'datasets')
+    print(f'datadir:{datadir}')
     if not os.path.exists(datadir):
+        print('datadir doesnt exist')
         os.makedirs(datadir)
+        print('datadir created')
+    else:
+        print('datadir exist')
 
     inputs_dir = os.getenv('VH_INPUTS_DIR', '/')
     input_dir = os.path.join(inputs_dir, 'cifar-10-batches-py')
@@ -29,8 +34,11 @@ def use_valohai_input():
 
     untar_fpath = os.path.join(datadir, 'cifar-10-batches-py')
     fpath = untar_fpath + '.tar.gz'
+    print(f'Original input_file:{input_file}')
     input_file = os.path.join(input_dir, input_files[0])  # We expect to have only one file as input
+    print(f'New input_file:{input_file}')
     shutil.move(input_file, fpath)
+    print('shutil.move done')
 
 
 def train(params):
