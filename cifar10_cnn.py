@@ -37,6 +37,8 @@ def use_valohai_input():
     print('Original input_file:',input_files)
     input_file = os.path.join(input_dir, input_files[0])  # We expect to have only one file as input
     print('New input_file:',input_file)
+    print('fpath:',fpath)
+    
     shutil.move(input_file, fpath)
     print('shutil.move done')
 
