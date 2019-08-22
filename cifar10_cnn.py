@@ -33,12 +33,13 @@ def use_valohai_input():
     input_files = os.listdir(input_dir)
 
     untar_fpath = os.path.join(datadir, 'cifar-10-batches-py')
-    fpath = untar_fpath + '.tar.gz'
+    fpath = os.path.join(untar_fpath, input_files[0])
+    #fpath = untar_fpath + '.tar.gz'
     print('Original input_file:',input_files)
     input_file = os.path.join(input_dir, input_files[0])  # We expect to have only one file as input
     print('New input_file:',input_file)
     print('fpath:',fpath)
-    
+
     shutil.move(input_file, fpath)
     print('shutil.move done')
 
