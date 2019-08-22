@@ -18,21 +18,25 @@ def use_valohai_input():
     Place input file defined through Valohai to cache where cifar10.load_data() expects it to be.
     This allows skipping download phase if the input file is already on the instance.
     """
+
+    CIFAR10BATCHFOLDERNAME = 'cifar-10-batches-py'
+
     datadir_base = os.path.expanduser(os.path.join('~', '.keras'))
     datadir = os.path.join(datadir_base, 'datasets')
     print('datadir:',datadir)
     if not os.path.exists(datadir):
         print('datadir doesnt exist')
         os.makedirs(datadir)
+        os.makedirs(os.path.join(datadir, CIFAR10BATCHFOLDERNAME))
         print('datadir created')
     else:
         print('datadir exist')
 
     inputs_dir = os.getenv('VH_INPUTS_DIR', '/')
-    input_dir = os.path.join(inputs_dir, 'cifar-10-batches-py')
+    input_dir = os.path.join(inputs_dir, CIFAR10BATCHFOLDERNAME)
     input_files = os.listdir(input_dir)
 
-    untar_fpath = os.path.join(datadir, 'cifar-10-batches-py')
+    untar_fpath = os.path.join(datadir, CIFAR10BATCHFOLDERNAME)
     fpath = os.path.join(untar_fpath, input_files[0])
     #fpath = untar_fpath + '.tar.gz'
     print('Original input_file:',input_files)
