@@ -42,7 +42,13 @@ def use_valohai_input():
     print('Original input_file:',input_files)
     input_file = os.path.join(input_dir, input_files[0])  # We expect to have only one file as input
     print('New input_file:',input_file)
+    print('untar_fpath:',untar_fpath)
     print('fpath:',fpath)
+
+    if (os.path.isfile(input_file)):
+        print('input_path file exists')
+    if os.path.exists(untar_fpath):
+        print('untar_fpath directory exists')
 
     shutil.move(input_file, fpath)
     print('shutil.move done')
