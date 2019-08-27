@@ -27,7 +27,6 @@ def use_valohai_input():
     if not os.path.exists(datadir):
         print('datadir doesnt exist')
         os.makedirs(datadir)
-        os.makedirs(os.path.join(datadir, CIFAR10BATCHFOLDERNAME))
         print('datadir created')
     else:
         print('datadir exist')
@@ -36,7 +35,7 @@ def use_valohai_input():
     input_dir = os.path.join(inputs_dir, CIFAR10BATCHFOLDERNAME)
     input_files = os.listdir(input_dir)
 
-    untar_fpath = os.path.join(datadir, CIFAR10BATCHFOLDERNAME)
+    untar_fpath = datadir
     fpath = os.path.join(untar_fpath, input_files[1])
     #fpath = untar_fpath + '.tar.gz'
     print('Original input_file:',input_files)
