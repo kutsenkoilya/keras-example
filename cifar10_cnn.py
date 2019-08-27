@@ -71,7 +71,7 @@ def use_valohai_input_batch():
     inputs_dir = os.getenv('VH_INPUTS_DIR', '/')
     input_dir = os.path.join(inputs_dir, CIFAR10BATCHFOLDERNAME)
     input_files = os.listdir(input_dir)
-    untar_fpath = os.path.join(datadir, CIFAR10BATCHFOLDERNAME)
+    untar_fpath = datadir
 
     print('input_dir',input_dir)
     print('untar_fpath',untar_fpath)
@@ -79,8 +79,7 @@ def use_valohai_input_batch():
     for files in input_files:
         fullpath = os.path.join(input_dir, files)
         print('this_fullpath',fullpath)
-        shutil.copy2(fullpath,untar_fpath)
-        #shutil.move(fullpath,untar_fpath)
+        shutil.copy2(fullpath,untar_fpath) #shutil.move(fullpath,untar_fpath)
         print('file copied')
     print('batch copy done')
 
