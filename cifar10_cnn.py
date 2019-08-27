@@ -37,10 +37,10 @@ def use_valohai_input():
     input_files = os.listdir(input_dir)
 
     untar_fpath = os.path.join(datadir, CIFAR10BATCHFOLDERNAME)
-    fpath = os.path.join(untar_fpath, input_files[0])
+    fpath = os.path.join(untar_fpath, input_files[1])
     #fpath = untar_fpath + '.tar.gz'
     print('Original input_file:',input_files)
-    input_file = os.path.join(input_dir, input_files[0])  # We expect to have only one file as input
+    input_file = os.path.join(input_dir, input_files[1])  # We expect to have only one file as input
     print('New input_file:',input_file)
     print('untar_fpath:',untar_fpath)
     print('fpath:',fpath)
