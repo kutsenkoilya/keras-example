@@ -66,7 +66,6 @@ def use_valohai_input_batch():
     print('datadir:',datadir)
     if not os.path.exists(datadir):
         os.makedirs(datadir)
-        os.makedirs(os.path.join(datadir, CIFAR10BATCHFOLDERNAME))
 
     inputs_dir = os.getenv('VH_INPUTS_DIR', '/')
     input_dir = os.path.join(inputs_dir, CIFAR10BATCHFOLDERNAME)
@@ -82,6 +81,7 @@ def use_valohai_input_batch():
         shutil.copy2(fullpath,untar_fpath) #shutil.move(fullpath,untar_fpath)
         print('file copied')
     print('batch copy done')
+    print(os.listdir(untar_fpath))
 
 
 
