@@ -80,9 +80,11 @@ def use_valohai_input_batch():
     for files in input_files:
         fullpath = os.path.join(input_dir, files)
         print('this_fullpath',fullpath)
-        shutil.move(fullpath,untar_fpath)
+        shutil.copy2(fullpath,untar_fpath)
+        #shutil.move(fullpath,untar_fpath)
+        print('file copied')
+    print('batch copy done')
 
-    print('shutil.move done')
 
 
 def train(params):
