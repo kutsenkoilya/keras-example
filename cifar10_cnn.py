@@ -54,6 +54,35 @@ def use_valohai_input():
     print('shutil.move done')
 
 
+def use_valohai_input_batch():
+    """
+    Place input file defined through Valohai to cache where cifar10.load_data() expects it to be.
+    This allows skipping download phase if the input file is already on the instance.
+    """
+
+    CIFAR10BATCHFOLDERNAME = 'cifar-10-batches-py'
+
+    datadir_base = os.path.expanduser(os.path.join('~', '.keras'))
+    datadir = os.path.join(datadir_base, 'datasets')
+    print('datadir:',datadir)
+    if not os.path.exists(datadir):
+        os.makedirs(datadir)
+        os.makedirs(os.path.join(datadir, CIFAR10BATCHFOLDERNAME))
+
+    inputs_dir = os.getenv('VH_INPUTS_DIR', '/')
+    input_dir = os.path.join(inputs_dir, CIFAR10BATCHFOLDERNAME)
+    input_files = os.listdir(input_dir)
+    untar_fpath = os.path.join(datadir, CIFAR10BATCHFOLDERNAME)
+
+    print('input_dir',input_dir)
+    print('untar_fpath',untar_fpath)
+
+    for files in input_files:
+        shutil.move(files,untar_fpath)
+
+    print('shutil.move done')
+
+
 def train(params):
     batch_size = params.batch_size
     num_classes = params.num_classes
@@ -148,7 +177,7 @@ def train(params):
 
 
 if __name__ == '__main__':
-    use_valohai_input()
+    use_valohai_input_batch()
 
     parser = argparse.ArgumentParser()
     parser.add_argument('--batch_size', type=int)
