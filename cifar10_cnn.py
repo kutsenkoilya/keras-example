@@ -78,7 +78,9 @@ def use_valohai_input_batch():
     print('untar_fpath',untar_fpath)
 
     for files in input_files:
-        shutil.move(files,untar_fpath)
+        fullpath = os.path.join(input_dir, files)
+        print('this_fullpath',fullpath)
+        shutil.move(fullpath,untar_fpath)
 
     print('shutil.move done')
 
